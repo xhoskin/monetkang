@@ -17,6 +17,7 @@
 
 @grid-side: 38px;
 
+@img: "../images/";
 
 
 //
@@ -322,6 +323,40 @@ body {
         font-family: @font-family-alt;
     }
 
+    ul, ol {
+        padding-left: 16px;
+        margin-bottom: 18px;
+    }
+
+    ul {
+        list-style:none;
+        padding: 0;
+
+        li {
+            padding-left: 16px;
+            background: url("@{img}dash.gif") 0 10px no-repeat;
+        }
+    }
+
+    
+    a[href $= ".doc"] {
+        position:relative;
+        padding: 10px 0 0 58px;
+        display: inline-block;
+        font-size: 13px;
+
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            width: 48px;
+            height: 57px;
+            background: url("@{img}file-doc.gif") no-repeat;
+        }	
+    }
+
 }
 
 blockquote {
@@ -333,6 +368,3 @@ blockquote {
     text-align: center;
 }
 
-ul, ol {
-    margin-left: 16px;
-}
