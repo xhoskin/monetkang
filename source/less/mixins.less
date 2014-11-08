@@ -1,0 +1,482 @@
+// Primitives
+.list-unstyled {
+    margin-left: 0;
+    padding-left: 0;
+    li {
+        display: block;
+        padding: 0;
+        background: none;
+    }
+}
+
+.a-left { 
+    text-align: left; 
+}
+.a-right { 
+    text-align: right; 
+}
+.a-center { 
+    text-align: center; 
+}
+
+.v-top { 
+    vertical-align: top;
+}
+.v-bottom { 
+    vertical-align: bottom;
+}
+.v-middle { 
+    vertical-align: middle;
+}
+
+.hidden { 
+    display:none;
+}
+.no-margin { 
+    margin: 0!important; 
+}
+.no-padding { 
+    padding: 0!important; 
+}
+.no-bg { 
+    background: none!important; 
+}
+.no-shadow{  
+    -webkit-box-shadow: none; 
+    box-shadow: none; 
+}
+.no-border { 
+    border: none!important; 
+}
+.no-underline { 
+    text-decoration:none!important;
+}
+.underline { 
+    text-decoration:underline;
+}
+
+.w-space { white-space: nowrap; }
+
+.f-left {
+    float: left;
+}
+
+.f-right {
+    float: right;
+}
+
+.f-none{ float:none;}
+
+.inline-block(@va:baseline){ display: inline-block; display: ~'inline !ie'; zoom: ~'1 !ie'; vertical-align:@va;}
+
+#pie {
+  position: relative;
+  behavior: url('/css/PIE.htc');
+  -pie-poll: true;
+}
+
+.ruble {
+    font-family: "rouble";
+    font-style: normal;
+    line-height: 100%;
+}
+
+/*!
+ * Preboot v2
+ *
+ * Open sourced under MIT license by @mdo.
+ * Some variables and mixins from Bootstrap (Apache 2 license).
+ */
+
+//
+// Grid system
+// --------------------------------------------------
+
+// Grid
+.make-row() {
+  // Negative margin the row out to align the content of columns
+  margin-left: -@grid-column-padding;
+  margin-right: -@grid-column-padding;
+  // Then clear the floated columns
+  .clearfix();
+}
+.make-column(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    float: left;
+    // Calculate width based on number of columns available
+    width: percentage(@columns / @grid-columns);
+  }
+  // Prevent columns from collapsing when empty
+  min-height: 1px;
+  // Set inner padding as gutters instead of margin
+  padding-left: @grid-column-padding;
+  padding-right: @grid-column-padding;
+  // Proper box-model (padding doesn't add to width)
+  .box-sizing(border-box);
+}
+.make-column-offset(@columns) {
+  @media (min-width: @grid-float-breakpoint) {
+    margin-left: percentage(@columns / @grid-columns);
+  }
+}
+
+//
+// Mixins: vendor prefixes
+// --------------------------------------------------
+
+// Box sizing
+.box-sizing(@box-model) {
+  -webkit-box-sizing: @box-model; // Safari <= 5
+     -moz-box-sizing: @box-model; // Firefox <= 19
+          box-sizing: @box-model;
+}
+
+// Single side border-radius
+.border-top-radius(@radius) {
+  border-top-right-radius: @radius;
+   border-top-left-radius: @radius;
+}
+.border-right-radius(@radius) {
+  border-bottom-right-radius: @radius;
+     border-top-right-radius: @radius;
+}
+.border-bottom-radius(@radius) {
+  border-bottom-right-radius: @radius;
+   border-bottom-left-radius: @radius;
+}
+.border-left-radius(@radius) {
+  border-bottom-left-radius: @radius;
+     border-top-left-radius: @radius;
+}
+
+// Drop shadows
+.box-shadow(@shadow1: 0 0 0 0 transparent, @shadow2: 0 0 0 0 transparent) {
+  -moz-box-shadow: @shadow1, @shadow2;
+  box-shadow: @shadow1, @shadow2;
+}
+
+// Transitions
+.transition(@transition) {
+  -webkit-transition: @transition;
+     -moz-transition: @transition;
+       -o-transition: @transition;
+          transition: @transition;
+}
+.transition-delay(@transition-delay) {
+  -webkit-transition-delay: @transition-delay;
+     -moz-transition-delay: @transition-delay;
+       -o-transition-delay: @transition-delay;
+          transition-delay: @transition-delay;
+}
+.transition-duration(@transition-duration) {
+  -webkit-transition-duration: @transition-duration;
+     -moz-transition-duration: @transition-duration;
+       -o-transition-duration: @transition-duration;
+          transition-duration: @transition-duration;
+}
+
+// Transformations
+.rotate(@degrees) {
+  -webkit-transform: rotate(@degrees);
+     -moz-transform: rotate(@degrees);
+      -ms-transform: rotate(@degrees);
+       -o-transform: rotate(@degrees);
+          transform: rotate(@degrees);
+}
+.scale(@ratio) {
+  -webkit-transform: scale(@ratio);
+     -moz-transform: scale(@ratio);
+      -ms-transform: scale(@ratio);
+       -o-transform: scale(@ratio);
+          transform: scale(@ratio);
+}
+.translate(@x, @y) {
+  -webkit-transform: translate(@x, @y);
+     -moz-transform: translate(@x, @y);
+      -ms-transform: translate(@x, @y);
+       -o-transform: translate(@x, @y);
+          transform: translate(@x, @y);
+}
+.skew(@x, @y) {
+  -webkit-transform: skew(@x, @y);
+     -moz-transform: skew(@x, @y);
+      -ms-transform: skewX(@x) skewY(@y); // See https://github.com/twitter/bootstrap/issues/4885
+       -o-transform: skew(@x, @y);
+          transform: skew(@x, @y);
+  -webkit-backface-visibility: hidden; // See https://github.com/twitter/bootstrap/issues/5319
+}
+.translate3d(@x, @y, @z) {
+  -webkit-transform: translate3d(@x, @y, @z);
+     -moz-transform: translate3d(@x, @y, @z);
+       -o-transform: translate3d(@x, @y, @z);
+          transform: translate3d(@x, @y, @z);
+}
+
+// Backface visibility
+//
+// Prevent browsers from flickering when using CSS 3D transforms.
+// Default value is `visible`, but can be changed to `hidden
+// See git pull https://github.com/dannykeane/bootstrap.git backface-visibility for examples
+.backface-visibility(@visibility){
+  -webkit-backface-visibility: @visibility;
+     -moz-backface-visibility: @visibility;
+          backface-visibility: @visibility;
+}
+
+// User select
+//
+// For selecting text on the page
+.user-select(@select) {
+  -webkit-user-select: @select;
+     -moz-user-select: @select;
+      -ms-user-select: @select;
+       -o-user-select: @select;
+          user-select: @select;
+}
+
+// Opacity
+.opacity(@opacity) {
+  opacity: @opacity;
+  @opacity-ie: @opacity * 100;
+  filter: ~"alpha(opacity=@{opacity-ie})"; // IE8
+}
+
+// Placeholder text
+.placeholder(@color: @input-color-placeholder) {
+  &:-moz-placeholder            { color: @color; } // Firefox 4-18
+  &::-moz-placeholder           { color: @color; } // Firefox 19+
+  &:-ms-input-placeholder       { color: @color; } // Internet Explorer 10+
+  &::-webkit-input-placeholder  { color: @color; } // Safari and Chrome
+}
+
+// Resize anything
+.resizable(@direction) {
+  resize: @direction; // Options: horizontal, vertical, both
+  overflow: auto; // Safari fix
+}
+
+// CSS3 Content Columns
+.content-columns(@width, @count, @gap) {
+  -webkit-column-width: @width;
+     -moz-column-width: @width;
+          column-width: @width;
+  -webkit-column-count: @count;
+     -moz-column-count: @count;
+          column-count: @count;
+  -webkit-column-gap: @gap;
+     -moz-column-gap: @gap;
+          column-gap: @gap;
+}
+
+// Optional hyphenation
+.hyphens(@mode: auto) {
+  word-wrap: break-word;
+  -webkit-hyphens: @mode;
+     -moz-hyphens: @mode;
+      -ms-hyphens: @mode;
+       -o-hyphens: @mode;
+          hyphens: @mode;
+}
+
+// GRADIENTS
+// --------------------------------------------------
+
+#gradient {
+  .horizontal (@startColor: #555, @endColor: #333) {
+    background-color: /*@endColor */ transparent;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, right top, from(@startColor), to(@endColor)); /* Konqueror */
+    background-image: -moz-linear-gradient(left, @startColor, @endColor); /* FF 3.6+ */
+    background-image: -ms-linear-gradient(left, @startColor, @endColor); /* IE10 */
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); /* Safari 4+, Chrome 2+ */
+    background-image: -webkit-linear-gradient(left, @startColor, @endColor); /* Safari 5.1+, Chrome 10+ */
+    background-image: -o-linear-gradient(left, @startColor, @endColor); /* Opera 11.10 */
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); /* IE6 & IE7 */
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor); /* IE8+ */
+    background-image: linear-gradient(left, @startColor, @endColor); /* the standard */
+    *zoom: 1;
+  }
+  .vertical (@startColor: #555, @endColor: #333, @pie:false) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Konqueror */
+    background-image: -moz-linear-gradient(@startColor, @endColor); /* FF 3.6+ */
+    background-image: -ms-linear-gradient(@startColor, @endColor); /* IE10 */
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); /* Safari 4+, Chrome 2+ */
+    background-image: -webkit-linear-gradient(@startColor, @endColor); /* Safari 5.1+, Chrome 10+ */
+    background-image: -o-linear-gradient(@startColor, @endColor); /* Opera 11.10 */
+    background-image: linear-gradient(@startColor, @endColor); /* the standard */
+  }
+  .vertical (@startColor: #555, @endColor: #333, @pie:false) when (@pie = false) {
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); /* IE6 & IE7 */
+    -ms-filter: %("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor); /* IE8+ */
+    *zoom: 1;
+  }
+  .vertical (@startColor: #555, @endColor: #333, @pie:false) when (@pie = true) {
+    -pie-background: linear-gradient(@startColor, @endColor);
+  }
+  .directional (@startColor: #555, @endColor: #333, @deg: 45deg) {
+    background-color: @endColor;
+    background-repeat: repeat-x;
+    background-image: -moz-linear-gradient(@deg, @startColor, @endColor); /* FF 3.6+ */
+    background-image: -ms-linear-gradient(@deg, @startColor, @endColor); /* IE10 */
+    background-image: -webkit-linear-gradient(@deg, @startColor, @endColor); /* Safari 5.1+, Chrome 10+ */
+    background-image: -o-linear-gradient(@deg, @startColor, @endColor); /* Opera 11.10 */
+    background-image: linear-gradient(@deg, @startColor, @endColor); /* the standard */
+  }
+	.horizontal-three(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+		@percent: @colorStop*100*1%;
+		background: @endColor; /* Old browsers */
+		background: -moz-linear-gradient(left,  @startColor 0%, @midColor @percent, @endColor 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,@startColor), color-stop(@percent,@midColor), color-stop(100%,@endColor)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  @startColor 0%,@midColor @percent,@endColor 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  @startColor 0%,@midColor @percent,@endColor 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  @startColor 0%,@midColor @percent,@endColor 100%); /* IE10+ */
+		background: linear-gradient(to right,  @startColor 0%,@midColor @percent,@endColor 100%); /* W3C */
+	}	
+  .vertical-three(@startColor: #00b3ee, @midColor: #7a43b6, @colorStop: 0.5, @endColor: #c3325f) {
+		@percent: @colorStop*100*1%;
+    background-color: @endColor; 
+    background-repeat: repeat-x; 
+    background-image: -khtml-gradient(linear,	left top,	left bottom,	color-stop(0%, @startColor),	color-stop(@percent, @midColor),	color-stop(@endColor, 100%)); /* Konqueror */
+    background-image: -moz-linear-gradient(top, @startColor 0%, @midColor @percent, @endColor 100%); /* FF 3.6+ */
+    background-image: -ms-linear-gradient(top, @startColor 0%, @midColor @percent, @endColor 100%); /* IE10 */
+    background-image: -webkit-gradient(linear,	left top,	left bottom,	color-stop(0, @startColor),	color-stop(@colorStop, @midColor),	color-stop(1, @endColor)); /* Safari 4+, Chrome 2+ */
+    background-image: -webkit-linear-gradient(top, @startColor 0%, @midColor @percent, @endColor 100%); /* Safari 5.1+, Chrome 10+ */
+    background-image: -o-linear-gradient(top, @startColor 0%, @midColor @percent, @endColor 100%); /* Opera 11.10 */
+    background-image: linear-gradient(top, @startColor 0%, @midColor @percent, @endColor 100%); /* the standard */		
+  }
+ .vertical-four-colors(@startColor: #00b3ee, @midColor1: #7a43b6, @colorStop1: 0.5, @midColor2: #7a43b6, @colorStop2: 0.5, @endColor: #c3325f) {
+    @percent1: @colorStop1*100*1%;
+    @percent2: @colorStop2*100*1%;
+    
+    /* Recent browsers */
+    background-color: @endColor;
+    background-repeat: no-repeat;
+    background: -webkit-gradient(linear,left top, left bottom,from(@startColor),to(@endColor),color-stop(@colorStop1, @midColor1),color-stop(@colorStop2, @midColor2));
+    background: -webkit-linear-gradient(top,@startColor,@midColor1 @percent1,@midColor2 @percent2,@endColor);
+    background: -moz-linear-gradient(top,@startColor,@midColor1 @percent1,@midColor2 @percent2,@endColor);
+    background: -o-linear-gradient(top,@startColor,@midColor1 @percent1,@midColor2 @percent2,@endColor);
+    background: -ms-linear-gradient(top,@startColor,@midColor1 @percent1,@midColor2 @percent2,@endColor);
+    background: linear-gradient(top,@startColor,@midColor1 @percent1,@midColor2 @percent2,@endColor);
+  }  
+	.vertical-hotspot (@startColor1: #77BFE6,@colorStop1: 0, @startColor2: #69B1E0, @colorStop2: 0.5, @endColor1: #3897D6, @colorStop3: 0.5, @endColor2: #2382CB, @colorStop4: 1, @pie:false) {
+		@percent1: @colorStop1*100*1%;
+		@percent2: @colorStop2*100*1%;
+		@percent3: @colorStop3*100*1%;
+		@percent4: @colorStop4*100*1%;
+    background-color: @endColor2;
+    background-repeat: repeat-x;
+    background-image: -khtml-gradient(linear,	left top,	left bottom,	color-stop(@colorStop1, @startColor1),	color-stop(@colorStop2, @startColor2),	color-stop(@colorStop3, @endColor1),	color-stop(@colorStop4, @endColor2)); /* Konqueror */
+    background-image: -moz-linear-gradient(top, @startColor1 @percent1, @startColor2 @percent2, @endColor1 @percent3, @endColor2 @percent4); /* FF 3.6+ */
+    background-image: -ms-linear-gradient(top, @startColor1 @percent1, @startColor2 @percent2, @endColor1 @percent3, @endColor2 @percent4); /* IE10 */
+    background-image: -webkit-gradient(linear,	left top,	left bottom,	color-stop(@colorStop1, @startColor1),	color-stop(@colorStop2, @startColor2),	color-stop(@colorStop3, @endColor1),	color-stop(@colorStop4, @endColor2)); /* Safari 4+, Chrome 2+ */
+    background-image: -webkit-linear-gradient(top, @startColor1 @percent1, @startColor2 @percent2, @endColor1 @percent3, @endColor2 @percent4); /* Safari 5.1+, Chrome 10+ */
+    background-image: -o-linear-gradient(top, @startColor1 @percent1, @startColor2 @percent2, @endColor1 @percent3, @endColor2 @percent4); /* Opera 11.10 */
+    background-image: linear-gradient(top, @startColor1 @percent1, @startColor2 @percent2, @endColor1 @percent3, @endColor2 @percent4); /* the standard */
+  }
+  .vertical-hotspot (@startColor1: #77BFE6, @startColor2: #69B1E0, @endColor1: #3897D6, @endColor2: #2382CB, @pie:false) when (@pie = true) {
+    -pie-background: linear-gradient(top, @startColor1 0%, @startColor2 50%, @endColor1 50%, @endColor2 100%);
+  }
+	
+}
+
+// Reset filters for IE
+//
+// When you need to remove a gradient background, do not forget to use this to reset
+// the IE filter for IE9 and below.
+.reset-filter() {
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(enabled = false)"));
+}
+
+
+
+//
+// Mixins: utilities
+// --------------------------------------------------
+
+// Clearfix
+//
+// Source: http://nicolasgallagher.com/micro-clearfix-hack/
+.clearfix() {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+    // Fixes Opera/contenteditable bug:
+    // http://nicolasgallagher.com/micro-clearfix-hack/#comment-36952
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// Center-align a block level element
+.center-block() {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+// Sizing shortcuts
+.size(@width, @height) {
+  width: @width;
+  height: @height;
+}
+.square(@size) {
+  .size(@size, @size);
+}
+
+// Text overflow
+//
+// Requires inline-block or block for proper styling
+.text-truncate() {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Retina images
+//
+// Retina background-image support with non-retina fall back
+.retina-image(@file-1x, @file-2x, @width-1x, @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+
+.dashed { text-decoration:none; border-bottom:1px dashed; cursor: pointer; .transition(border-bottom-color .2s ease 0s);}
+.dotted{ text-decoration:none; border-bottom:1px dotted; cursor: pointer; .transition(border-bottom-color .2s ease 0s); }
+.dotted:hover, a:hover .dotted { text-decoration:none;  border-bottom-color:transparent; }
+.dashed:hover, a:hover .dashed { text-decoration:none;  border-bottom-color:transparent; }
+
+.border-radius(@radius: 5px) {
+  /*-moz-border-radius: @radius;
+  -webkit-border-radius: @radius;*/
+  border-radius: @radius;
+}
+
+/*SPRITE*/
+.sprite(@bg-position: 0 0, @bg-color: transparent){ background:url(../images/sprite.png) no-repeat @bg-position @bg-color;}
+
+/*POSITIONS*/
+.absolute{ position:absolute;}
+.relative{ position:relative;}
+.fixed{ position:fixed;}
+.static{ position:static;}
+.xy(@x:0, @y:0){ left:@x; top:@y;}
+
+/*COLORS*/
+.orange{ color:@c_orange;}

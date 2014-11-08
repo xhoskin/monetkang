@@ -1,0 +1,10 @@
+//Position element to absolute center (requires fixed width and height)
+.abs-center(@width:0, @height:0){
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: @width;
+  height: @height;
+  margin: -@height/2 0 0 -@width/2;
+}

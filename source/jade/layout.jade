@@ -1,0 +1,39 @@
+﻿doctype html
+//[if lt IE 7]><html class="no-js ie6 oldie" lang="ru"> <![endif]
+//[if IE 7]><html class="no-js ie7 oldie" lang="ru"> <![endif]
+//[if IE 8]><html class="no-js ie8 oldie" lang="ru"> <![endif]
+//[if IE 9]><html class="no-js ie9" lang="ru"> <![endif]
+//[if gt IE 8]><!
+html(class="no-js", lang="en")
+    //<![endif]
+    head
+        block includes
+        include meta
+        link(rel="stylesheet" href="../css/style.css")
+        link(href='http://fonts.googleapis.com/css?family=Philosopher:400,700&subset=cyrillic' rel='stylesheet' type='text/css' )
+        link(href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=cyrillic' rel='stylesheet' type='text/css')
+        script(src="../js/lib/modernizr-2.6.2.min.js")
+        title
+            Верстка
+        //[if lt IE 10]><link href="/css/ie.css" rel="stylesheet"> <!--<![endif]
+        //[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script><![endif]
+    body
+        //[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]
+        #site
+            #main
+                header
+                    block header
+                
+                div.main-content.container
+                    block content
+            
+            footer.footer
+                block footer
+
+        script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+        script
+            |window.jQuery || document.write('<script src="/js/lib/jquery-1.10.2.min.js"><\/script>')
+
+        block layers
+        block library
+        block init

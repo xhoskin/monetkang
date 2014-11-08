@@ -1,0 +1,14 @@
+//Базовый шаблон
+extends layout
+
+//Контент
+append content
+    table
+        -each key, index in pages
+            tr
+                td
+                    a(href="/templates/#{index}.html" target="_blank")
+                        =key
+                td
+                    a(href="/design/#{design[index]}" target="_blank")
+                        Макет

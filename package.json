@@ -1,0 +1,23 @@
+{
+    "name": "my-project-name",
+    "version": "0.0.1",
+    "description": "Проект для начала верстки, нужно расширение http://livereload.com/",
+    "private": true,
+    "dependencies": {
+        "grunt-cli": "latest",
+        "grunt-contrib-concat": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-less": "latest",
+        "grunt-spritesmith": "latest",
+        "grunt-prettify": "latest",
+        "grunt-contrib-jade": "latest",
+        "grunt-sync": "latest",
+        "grunt-contrib-imagemin": "latest",
+        "grunt-contrib-clean": "latest",
+        "grunt-contrib-watch": "latest"
+    },
+    "repository": {
+        "type": "svn",
+        "url": ""
+    }
+}

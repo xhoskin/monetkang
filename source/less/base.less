@@ -1,0 +1,62 @@
+﻿// Base layout
+html,
+body { 
+    width: 100%; 
+    height: 100%; 
+}
+
+body { 
+    min-width: @min_width; 
+}
+
+#site { 
+    height: 100%; 
+}
+
+#main { 
+    min-height: 100%; 
+    @min_width: 1000px; 
+    @max_width: 1280px;
+}
+
+#content { 
+    padding-bottom: @footer_height + 49;
+}
+
+footer { *zoom: 1;
+    margin-top: -@footer_height; 
+    height: @footer_height; 
+    @min_width: 1000px; 
+    @max_width: 1280px;
+}
+
+.center{ margin: 0 -18px;
+    + .center-no-left{ margin-top:35px;}
+}
+
+.col-right {
+    .f-right;
+    width: 226px;
+    margin: 0 -242px 0 0;
+    padding: 0 0 0 16px;
+}
+
+.center-no-left { 
+    padding: 0 242px 0 0;
+    margin: 0 -18px;
+    .clearfix();
+}
+
+.col-left {
+    .f-left;
+    width:300px;
+    margin:0 0 0 -320px;
+    padding:0;
+}
+.center-no-right {
+    margin: 0 -18px;
+    padding:0 0 0 320px;
+    .clearfix(); 
+}
+
+.wrapper { display: inline-block; width: 100%; .box-sizing(border-box); padding: 0 18px; }

@@ -1,0 +1,12 @@
+.make-icon(@name) {
+    .icon-@{name} {
+        background: url('@{img}sprite.png') ~"@{@{name}-offset-x} @{@{name}-offset-y}" no-repeat;
+        width: ~"@{@{name}-width}";
+        height: ~"@{@{name}-height}";
+        display: inline-block;
+    }
+}
+
+// Пример
+
+//.make-icon(logo);

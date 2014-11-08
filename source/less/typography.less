@@ -1,0 +1,431 @@
+// Typography
+body {  
+    font-family: @font-family-base; 
+    font-size: @fs-base; 
+    line-height: @lh-base; 
+    color: @c_text; 
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 { 
+    display:block; 
+    color: @c_text; 
+    font-weight: normal;
+    font-family: segoe_wplight; 
+    
+    &:first-child { margin-top: 0; }
+}
+
+h1, .h1 { 
+    font-size: @fs-h1; 
+    line-height: @fs-h1 + 8;
+    font-weight: normal;
+    margin: 0 0 15px;
+    color: #333;
+
+    &.big {
+      font-size: @fs-h1 + 24;
+      line-height: @fs-h1 + 32;
+    }
+
+    sup {
+        vertical-align: top;
+        top: 0;
+
+        * {
+          vertical-align: top;
+        }
+    }
+}
+h2, .h2 { 
+    font-size: @fs-h2; 
+    line-height: @fs-h2 + 6;
+    font-weight: normal;
+    margin: 26px 0 18px;
+}
+h3, .h3 { 
+    font-size: @fs-h3; 
+    line-height: @fs-h3 + 6;
+    font-weight: normal;
+    margin: 43px 0 19px;
+}
+h4, .h4 { 
+    font-size: @fs-h4; 
+    line-height: @fs-h4 + 6;
+    font-weight: normal;
+    margin: 32px 0 17px;
+}
+h5, .h5 {
+    font-size: @fs-h5; 
+    line-height: @fs-h5 + 6;
+    font-weight: normal;
+    margin: 22px 0 16px;
+}
+h6, .h6 {
+    font-size: @fs-h6; 
+    line-height: @fs-h6 + 6;
+    font-weight: normal;
+    margin: 22px 0 16px;
+}
+
+
+a { text-decoration: underline; color: @link-color; cursor: pointer;
+    &:hover { text-decoration: none; }
+    &.disabled { cursor: default; color: #999; text-decoration: none; }
+}
+
+i, em .italic { font-style: italic; }
+b, strong, .bold { font-weight: bold; }
+small, .small { font-size: @fs-mini; }
+big, .big { font-size: @fs-large; }
+
+p { 
+    margin-bottom: 10px;
+}
+
+blockquote { 
+    line-height: 22px;
+    font-size: 14px;
+    padding: 16px 64px 18px;
+    position: relative;
+    margin: 22px 0;
+    background: @c_beige;
+    
+    p { margin: 0; 
+        + p { margin-top: 10px; }
+    }
+
+    &:after, q.afeter { 
+        content: '«';
+        position: absolute;
+        font-size: 78px;
+        line-height: 46px;
+        font-family: segoe_wplight;
+        top: 0;
+        left: 10px;
+        z-index: 1;
+        color: #ed731d;
+    }
+    &:before { 
+        content: '»';
+        position: absolute;
+        font-size: 78px;
+        line-height: 46px;
+        font-family: segoe_wplight;
+        bottom: 20px;
+        right: 10px;
+        z-index: 1;
+        color: #ed731d;
+    }
+            
+    p { margin: 10px 0 0; 
+        &:first-child { margin-top: 0; }
+    }
+}
+
+li {
+    list-style: none;
+}
+
+ol {
+    margin: 5px 0 15px -5px;
+    list-style: none;
+    counter-reset: point;
+    
+    >li {
+        padding: 0 0 5px;
+        margin-left: 20px;
+        padding-left: 0;
+        background: none;
+        position: relative;				
+    }
+    >li:before {
+        content: counter(point) + '.';
+        counter-increment: point 1; 
+        font-size: @fs-base;
+        position: absolute;
+        left: -25px;
+        top: 0;
+        width: 20px;
+        color: @c_orange;
+        font-weight: bold;
+        text-align: center;
+    }	
+}
+ul { margin: 5px 0 15px;
+    > li {  padding: 0 0 5px 16px; background:  url("../images/icons/li.png") no-repeat scroll -1px 8px; }
+}
+
+/* TABLES */
+th {
+    font-size: @fs-base; 
+    text-align: left;
+    padding: 4px 16px; 
+    font-weight: normal;
+    vertical-align: top;
+    border-bottom: 1px solid #999;
+}
+td {
+	padding: 4px 16px;
+	vertical-align: top;
+	font-size: @fs-base;
+}
+table {}
+	
+img[align="left"]{ float:left; margin: 20px 20px 10px 0; }
+img[align="right"]{ float:right; margin: 20px 0 10px 20px; }
+img[align="center"]{ display:block; margin: 20px auto 10px; }
+
+input, button, textarea, select { font-family: @font-family-base;  }
+.ui-widget, .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: @font-family-base; }
+.ui-widget { font-size: 1em; }
+.ui-widget a { color: @link-color; }
+
+ul.list-styled {
+    > li {
+        background: url(../images/icons/li2.png) no-repeat 0 11px;
+        padding: 0 0 0 20px;
+        font-size: 16px;
+        line-height: 22px;
+        font-family: segoe_wplight; 
+        margin: 0 0 6px;
+    }
+}
+ul.list-styled-brand {
+    > li {
+        background: url(../images/icons/brand_icon_s.png) no-repeat 0 6px;
+        padding: 0 0 0 23px;
+        font-size: 16px;
+        line-height: 22px;
+        font-family: segoe_wplight; 
+        margin: 0 0 6px;
+    }
+}
+ol.list-styled {
+    > li {
+        font-size: 16px;
+        line-height: 22px;
+        font-family: segoe_wplight; 
+        margin: 0 0 6px 23px;
+        
+        &:before, >q.before {
+            font-size: 16px;
+            line-height: 22px;
+            font-family: segoe_wplight; 
+        }
+    }
+}
+
+.table-striped {
+    th, td { 
+        font-size: 14px; 
+        line-height: 22px; 
+        font-family: segoe_wpregular;
+        padding: 4px 16px;
+    }
+    tbody tr {
+        td { background: #f8f8f8; }
+        &:nth-child(odd) td { background: #f0f0f0; }
+    }
+}
+
+.information {
+    background: @c_beige url(../images/icons/important.png) no-repeat 16px 22px;
+    padding: 16px 34px 18px 64px;
+    font-size: 14px;
+    line-height: 22px;
+    font-style: italic;
+    min-height: 35px;
+    margin: 22px 0;
+}
+
+.article {
+    font-size: 14px;
+    line-height: 22px;
+    .clearfix();
+    margin: 0 0 8px;
+    
+    p { 
+        font-size: 14px;
+        line-height: 22px;
+        margin: 0 0 22px;
+    
+        .decorate-number { .inline-block; vertical-align: top; }
+        
+        + h2 { margin-top: 38px; }
+        
+        + ol, + ul {
+            margin-top: -10px;
+        }
+        &.h4 { font-size: @fs-h4; line-height: @fs-h4 + 6; font-weight: normal; }
+    }
+    li {
+        font-size: 16px;
+        line-height: 22px;
+        font-family: segoe_wplight; 
+        margin: 0 0 6px;
+    }
+    
+    ul { margin: 10px 0 30px;
+        > li {
+            background: url(../images/icons/li2.png) no-repeat 0 11px;
+            padding: 0 0 0 23px;
+            
+        }
+    }
+    
+    ol { margin: 10px 0 36px;
+        >li { margin-left: 23px; 
+            &:before, >q.before {
+                font-size: 16px;
+                line-height: 22px;
+                font-family: segoe_wplight; 
+            }
+        }
+    }
+    
+    ul.list-styled-brand {
+        > li {
+            background: url(../images/icons/brand_icon_s.png) no-repeat 0 6px;
+        }
+    }
+    
+    img {
+        max-width: 100%;
+        border-radius: 3px;
+        .box-shadow(0 1px 3px #bfbfbf);
+        #pie;
+    }
+    
+    small {
+        font-size: 12px;
+        line-height: 18px;
+    }
+    
+    .grey { color: #666 !important; }
+    
+    figure {
+        margin: 20px 0 26px;
+    }
+    figcaption { 
+        font-size: 12px;
+        line-height: 18px;
+        color: #666;
+        font-style: italic;
+    }
+    
+    .info {
+        position: relative;
+        top: 2px;
+    }
+    
+    table {
+        .table-striped;
+    }
+    
+    .file-icon {
+        content: '';
+        .inline-block;
+        vertical-align: top;
+        position: relative;
+        top: 5px;
+        left: 0;
+        margin: 0 6px 0 0;
+        width: 23px;
+        height: 14px;
+        text-align: center;
+        background-position: 0 -10px;
+        border-radius: 2px;
+    }
+    a[href $= ".pdf"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/pdf.png); }	
+    }
+    a[href $= ".doc"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/doc.png); }	
+    }
+    a[href $= ".docx"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/doc.png); }	
+    }
+    a[href $= ".xls"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/xls.png); }	
+    }
+    a[href $= ".zip"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/zip.png); }		
+    }
+    a[href $= ".rar"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/rar.png); }	
+    }		
+    a[href $= ".jpg"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/jpg.png); }	
+    }
+    a[href $= ".jpeg"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/jpg.png); }	
+    }
+    a[href $= ".xml"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/xml.png); }	
+    }
+    a[href $= ".ai"] {
+      &:before, q.before { .file-icon; background-image: url(../images/files/ai.png); }
+    }
+    .social-share { padding-top: 25px; }
+}
+
+.files { margin: 0 0 22px;
+    p { 
+        padding: 0 0 0 33px; 
+        margin: 0 0 10px; 
+        font-size: 14px;
+        line-height: 17px; 
+        position: relative;
+        min-height: 33px;
+    }
+    .size { display: block; color: #333; }
+    
+    .file-icon {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        margin: 0;
+        width: 23px;
+        height: 29px;
+        text-align: center;
+        content: '';
+        font-size: 10px;
+        line-height: 17px;
+        background: url(../images/files/file.png) no-repeat 0 0;
+    }
+    
+    a[href $= ".pdf"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/pdf.png); }	
+    }
+    a[href $= ".doc"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/doc.png); }	
+    }
+    a[href $= ".docx"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/doc.png); }	
+    }
+    a[href $= ".xls"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/xls.png); }	
+    }
+    a[href $= ".zip"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/zip.png); }		
+    }
+    a[href $= ".rar"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/rar.png); }	
+    }		
+    a[href $= ".jpg"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/jpg.png); }	
+    }
+    a[href $= ".jpeg"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/jpg.png); }	
+    }
+    a[href $= ".xml"] {
+        &:before, q.before { .file-icon; background-image: url(../images/files/xml.png); }
+    }
+    a[href $= ".ai"] {
+      &:before, q.before { .file-icon; background-image: url(../images/files/ai.png); }
+    }
+}
+
+.wrapper .article {
+    .information, blockquote { margin-left: -18px; margin-right: -18px; }
+}

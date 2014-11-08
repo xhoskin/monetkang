@@ -1,0 +1,125 @@
+//Главная страница
+
+//Базовый шаблон
+extends jade/layout
+ 
+//Подключение mixin
+append includes
+ 
+// Подключение библиотек скриптов
+append library
+
+    
+// Инициализация скриптов
+append init
+
+//----------------------------------------------------------------------------------------------------
+
+// Шапка
+append header
+    
+//Контент
+append content
+    .main-about
+        h1:Кулинарный конкурс от Монетки!
+
+        media.main-prize
+            img(src="../images/books.jpg")
+            .text
+                |Главный приз — 
+                br
+                |15 книг легендарного 
+                strong Джейми Оливера!
+        p
+            |Каждую неделю мы будем публиковать aрецепт национального блюда одной из пяти знаменитых гастрономических стран.
+            |Ваша задача — приготовить и сфотографиромать. 
+            b Лучший кулинар получит 15 книг Джейми Оливера
+            |, остальные получат поощрительные призы.
+
+    .tasks
+        ul.tasks-list
+            li
+                media.image
+                    img(src="http://placehold.it/120x120")
+                div.text
+                    .date 1 неделя 
+                        small (10 ноября — 16 ноября)
+                    h3.title Канеллони с грибами и говядиной в белом соусе
+                        span.country
+                            i.flag(style="background-image:url(../images/flags/italy.gif)")
+                            |Италия
+                    a.other-photos(href="#")
+                        span.sliding-photos
+                            img(src="http://placehold.it/38x38").ph1
+                            img(src="http://placehold.it/38x38").ph2
+                            img(src="http://placehold.it/38x38").ph3
+                        span.link
+                            |Фото других
+                            br
+                            |участников
+                    button.btn.btn-default 
+                        span.link Посмотреть рецепт
+                    button.btn.btn-primary.disabled Фото отправлено
+            li 
+                media.image
+                    img(src="http://placehold.it/120x120")
+                div.text
+                    .date 1 неделя 
+                        small (10 ноября — 16 ноября)
+                    h3.title Луковый суп
+                        span.country
+                            i.flag(style="background-image:url(../images/flags/france.gif)")
+                            |Франция
+                    a.other-photos(href="#")
+                        span.sliding-photos
+                            img(src="http://placehold.it/38x38").ph1
+                            img(src="http://placehold.it/38x38").ph2
+                            img(src="http://placehold.it/38x38").ph3
+                        span.link
+                            |Фото других
+                            br
+                            |участников
+                    button.btn.btn-default
+                        span.link Посмотреть рецепт
+                    button.btn.btn-primary Отправить фото
+            li 
+                media.image
+                    img(src="http://placehold.it/120x120")
+                div.text
+                    .date 1 неделя 
+                        small (10 ноября — 16 ноября)
+                    h3.title Голубцы
+                        span.country
+                            i.flag(style="background-image:url(../images/flags/russia.gif)")
+                            |Россия
+                    a.other-photos(href="#")
+                        span.sliding-photos
+                            img(src="http://placehold.it/38x38").ph1
+                            img(src="http://placehold.it/38x38").ph2
+                            img(src="http://placehold.it/38x38").ph3
+                        span.link
+                            |Фото других
+                            br
+                            |участников
+                    button.btn.btn-default
+                        span.link Посмотреть рецепт
+                    button.btn.btn-primary Отправить фото
+        i.bg.tl
+        i.bg.tr
+        i.bg.bl
+        i.bg.br
+
+    .social-block
+        h3 Ваши друзья хорошо готовят? Расскажите им о конкурсе!
+        здесь будет виджет социалок
+
+    .feedback-block
+        Остались вопросы? Напишите нам!
+        button.btn.btn-primary Обратная связь
+
+    .sub-text
+        Текст мелкими буквами. Как правило, пользователь программного обеспечения соглашается с условиями использования программы при помощи выделения чекбокса у фразы, предлагающей согласиться с условиями. Однако иногда разработчики используют иную модель: пользователю выводится фраза «продолжая использование программы, вы соглашаетесь с условиями использования». Кроме того, согласие может выражаться приёмом СМС сообщения на телефон с последующим вводом на сайте (как, к примеру, в случае МТ-подписок).
+    
+append footer
+    include jade/footer
+    
